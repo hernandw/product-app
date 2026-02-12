@@ -7,9 +7,34 @@ class Product {
 }
 
 class UI {
-  addProduct() {}
+  addProduct(product) {
+const productList = document.getElementById('product-list')
+const element = document.createElement("div")
+element.innerHTML = `
+
+<div class="card text-center mb-4">
+<div class="card-body">
+<strong>Nombre Producto: </strong> ${product.name} 
+<strong>Price Producto: </strong> ${product.price} 
+<strong>Year Producto: </strong> ${product.year}
+<a href="#" class="btn btn-danger" name=delete>Borrar</a> 
+
+</div>
+
+
+</div>
+
+
+`
+productList.appendChild(element)
+
+  }
 
   deleteProduct() {}
+
+  resetForm(){
+    document.getElementById('product-form').reset()
+  }
 
   showMessages() {}
 }
@@ -26,5 +51,10 @@ document.getElementById('product-form').addEventListener("submit", (e)=>{
     const year = document.getElementById('year').value.trim()
 
     const product = new Product(name, price, year)
-    console.log(product)
+    
+
+    const ui = new UI()
+
+    ui.addProduct(product)
+    ui.resetForm()
 })
