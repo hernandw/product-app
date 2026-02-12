@@ -30,7 +30,11 @@ productList.appendChild(element)
 
   }
 
-  deleteProduct() {}
+  deleteProduct(element) {
+if(element.name === "delete" )
+    
+
+  }
 
   resetForm(){
     document.getElementById('product-form').reset()
@@ -57,4 +61,9 @@ document.getElementById('product-form').addEventListener("submit", (e)=>{
 
     ui.addProduct(product)
     ui.resetForm()
+})
+
+document.getElementById('product-list').addEventListener("click", (e)=>{
+const ui = new UI()
+ui.deleteProduct(e.target)
 })
